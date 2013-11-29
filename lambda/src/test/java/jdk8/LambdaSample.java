@@ -7,6 +7,7 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
 import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.assertThat;
@@ -51,4 +52,25 @@ public class LambdaSample {
         Arrays.asList("foo", "bar", "baz").forEach(System.out::println);
     }
 
+    @Test
+    public void リダクション畳み込み() {
+
+        assertThat(IntStream.of(1, 2, 3, 4, 5, 6, 7, 8, 9, 10).sum(), is(55));
+    }
+
+    @Test
+    public void リダクション集計() {
+        int[] ar = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
+        assertThat(Arrays.stream(ar).sum(), is(55));
+    }
+
+    @Test
+    public void リダクションリスト変換() {
+        List<Integer> list = Arrays.asList(1, 2, 3, 4, 5, 6, 7, 8, 9, 10);
+        List<Integer> pows = list.stream().filter(i -> i < 5).map(i -> i * i).collect(Collectors.toList());
+        assertThat(pows.get(0), is(1));
+        assertThat(pows.get(1), is(4));
+        assertThat(pows.get(2), is(9));
+        assertThat(pows.get(3), is(16));
+    }
 }
