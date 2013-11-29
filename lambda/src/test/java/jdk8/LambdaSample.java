@@ -9,7 +9,7 @@ import java.util.stream.Collectors;
 import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.assertThat;
 
-public class LamnbdaSample {
+public class LambdaSample {
 
     @Test
     public void 先頭文字がhだった場合に全て大文字にする() {
