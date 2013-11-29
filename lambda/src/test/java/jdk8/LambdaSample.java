@@ -3,6 +3,7 @@ package jdk8;
 import org.junit.Test;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -27,4 +28,10 @@ public class LambdaSample {
         assertThat(actual.get(0), is("HELLO WORLD"));
         assertThat(actual.get(1), is("HOGE"));
     }
+
+    @Test
+    public void forEachはコレクションクラスでも使える() {
+        Arrays.asList("foo", "bar", "baz").forEach(System.out::println);
+    }
+
 }
