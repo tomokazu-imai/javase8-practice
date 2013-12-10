@@ -10,6 +10,7 @@ import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
 import static org.hamcrest.CoreMatchers.is;
+import static org.hamcrest.collection.IsIterableContainingInOrder.contains;
 import static org.junit.Assert.assertThat;
 
 public class LambdaSample {
@@ -68,9 +69,6 @@ public class LambdaSample {
     public void リダクションリスト変換() {
         List<Integer> list = Arrays.asList(1, 2, 3, 4, 5, 6, 7, 8, 9, 10);
         List<Integer> pows = list.stream().filter(i -> i < 5).map(i -> i * i).collect(Collectors.toList());
-        assertThat(pows.get(0), is(1));
-        assertThat(pows.get(1), is(4));
-        assertThat(pows.get(2), is(9));
-        assertThat(pows.get(3), is(16));
+        assertThat(pows, contains(1, 4, 9, 16));
     }
 }
