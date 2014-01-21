@@ -1,0 +1,27 @@
+apply plugin: 'java'
+apply plugin: 'maven'
+apply plugin: 'idea'
+
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
+
+// javacのオプションに encoding=UTF-8 を追加する
+[compileJava, compileTestJava]*.options*.encoding = 'UTF-8'
+
+// JavaSE8に対応していない。実行するのに必要なオプション。
+test.scanForTestClasses = false
+
+buildDir = 'target'
+
+task showPrfile {
+    println project.name
+    println project.buildDir
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    testCompile group: 'junit', name: 'junit', version: '4.+'
+}
