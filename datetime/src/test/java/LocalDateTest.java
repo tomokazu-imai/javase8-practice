@@ -5,23 +5,29 @@ import java.time.LocalDate;
 import java.time.Month;
 import java.time.temporal.TemporalAdjuster;
 
-import static org.junit.Assert.assertThat;
 import static org.hamcrest.core.Is.is;
+import static org.junit.Assert.assertThat;
 
 /**
- * Created with IntelliJ IDEA.
- * User: bobbyjam99
- * Date: 2013/11/16
- * Time: 16:46
- * To change this template use File | Settings | File Templates.
+ * java.time.LocalDateの動作確認用クラス
  */
 public class LocalDateTest {
 
     @Test
-    public void localTime() {
+    public void 現在日付取得() {
 
-        System.out.println(LocalDate.now());
-        assertThat(LocalDate.of(2000, Month.NOVEMBER, 20).toString(), is("2000-11-20"));
+        LocalDate.now(); // ex) 2014-01-22
+    }
+
+    @Test
+    public void 日付を指定して作成() {
+
+        String excepted = "2000-11-20";
+        assertThat(LocalDate.of(2000, Month.NOVEMBER, 20).toString(), is(excepted));
+    }
+
+    @Test
+    public void 次の水曜日を表示() {
 
         String excepted = "2000-11-22";
         LocalDate date = LocalDate.of(2000, Month.NOVEMBER, 20);
